@@ -1,3 +1,7 @@
+//to show the date 
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
+
 const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobChange, cityChange, streetChange, numberChange, emailChange, submitForm, isSubmitted, country}) => {
     return(
         <div>
@@ -8,7 +12,7 @@ const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobCha
                     FullName: <input value = {fullName} onChange={nameChange}/>
                     </div>
                     <div>
-                    Date of Birth: <input value = {date} onChange={dobChange} />
+                    Date of Birth: <DatePicker selected={date} onChange={dobChange} />
                     </div>
                     <div>
                     country: <select>{country.map((cName, index) => <option value={cName} key={index}> {cName.name.common}</option>)}</select>

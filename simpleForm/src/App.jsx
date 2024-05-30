@@ -10,10 +10,10 @@ function App() {
   const [streetAd, setStreetAd] = useState('')
   const [number, setNumber] = useState('')
   const [email, setEmail] = useState('')
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false)
   //state for fetching data from api
   const [country, setCountry] = useState([])
-
+  
   //useEffect to fetch data when the page render
   useEffect(() => {
     axios.get('https://restcountries.com/v3.1/all')
@@ -26,9 +26,10 @@ function App() {
   const nameChange = (event) => {
     setfullName(event.target.value)
   }
-  const dobChange = (event) => {
-    setDate(event.target.value)
-  }
+  //when user selectt date from the datePicker the dobChange function is called with the selected date as the argument
+  const dobChange = (date) => setDate(date);
+
+
   const cityChange = (event) => {
     setCity(event.target.value)
   }
@@ -54,6 +55,7 @@ function App() {
       <Form fullName={fullName} date={date} city={city} streetAd={streetAd}
       number={number} email={email} nameChange={nameChange} dobChange={dobChange} submitForm={submitForm}
       cityChange={cityChange} streetChange={streetChange} numberChange={numberChange} emailChange={emailChange} isSubmitted={isSubmitted} country={country} />
+      
     </>
   )
 }
