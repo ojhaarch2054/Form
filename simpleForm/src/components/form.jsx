@@ -1,4 +1,4 @@
-const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobChange, cityChange, streetChange, numberChange, emailChange, submitForm, isSubmitted}) => {
+const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobChange, cityChange, streetChange, numberChange, emailChange, submitForm, isSubmitted, country}) => {
     return(
         <div>
             <form onSubmit={submitForm}>
@@ -11,7 +11,7 @@ const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobCha
                     Date of Birth: <input value = {date} onChange={dobChange} />
                     </div>
                     <div>
-                    country: <select><option>...</option></select>
+                    country: <select>{country.map((cName, index) => <option value={cName} key={index}> {cName.name.common}</option>)}</select>
                     </div>
                     <div>
                     city: <input value = {city} onChange={cityChange}/>
@@ -20,7 +20,12 @@ const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobCha
                     Street Address: <input value = {streetAd} onChange={streetChange}/>
                     </div>
                     <div>
-                    Mobile Number: <input value = {number} onChange={numberChange}/>
+                    Mobile Number: <input type="text" value={number} onChange={numberChange} onKeyPress={event => {
+                        if (isNaN(event.key)) {
+                        event.preventDefault();
+                        alert('Enter only numbers, not string');
+                        }
+                    }}/>
                     </div>
                     <div>
                     Email: <input type="email" value = {email} onChange={emailChange} />
@@ -30,8 +35,8 @@ const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobCha
                     <input type="radio" /> <label>female</label>
                     <input type="radio" /> <label>other</label>
                     </div>
-                    <button type="submit">Submit</button>
-                    {isSubmitted ? <p>Thank you for submitting form</p> : <p>Please submit the form</p>}
+                    <button type="submit" value={isSubmitted}>Submit</button>
+                    
                     
                 </fieldset>
             </form>
