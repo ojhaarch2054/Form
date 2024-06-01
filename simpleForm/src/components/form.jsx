@@ -2,7 +2,7 @@
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobChange, cityChange, streetChange, numberChange, emailChange, submitForm, isSubmitted, country}) => {
+const Form = ({fullName, date, city, number, streetAd, loading, email, nameChange, dobChange, cityChange, streetChange, numberChange, emailChange, submitForm, isSubmitted, country}) => {
     return(
         <div>
             <form onSubmit={submitForm}>
@@ -12,13 +12,13 @@ const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobCha
                     FullName: <input value = {fullName} onChange={nameChange}/>
                     </div>
                     <div>
-                    Date of Birth: <DatePicker selected={date} onChange={dobChange} />
+                    Date Of Birth : <DatePicker selected={date} onChange={dobChange} />
                     </div>
                     <div>
-                    country: <select>{country.map((cName, index) => <option value={cName} key={index}> {cName.name.common}</option>)}</select>
+                    Country: <select>loading ? (<option>loading...</option>) : {country.map((cName, index) => <option value={cName} key={index}> {cName.name.common}</option>)}</select>
                     </div>
                     <div>
-                    city: <input value = {city} onChange={cityChange}/>
+                    City: <input value = {city} onChange={cityChange}/>
                     </div>
                     <div>
                     Street Address: <input value = {streetAd} onChange={streetChange}/>
@@ -35,7 +35,7 @@ const Form = ({fullName, date, city, number, streetAd, email, nameChange, dobCha
                     Email: <input type="email" value = {email} onChange={emailChange} />
                     </div>
                     <div>
-                    gender: <br /> <input type="radio"/> <label >male</label>
+                    gender: <br /> <input type="radio" /> <label >male</label>
                     <input type="radio" /> <label>female</label>
                     <input type="radio" /> <label>other</label>
                     </div>
